@@ -1,96 +1,167 @@
-// تابع جستجو بین برنامه‌ها
-function filterApps() {
-    const searchInput = document.getElementById('searchInput').value.toLowerCase();
-    const cards = document.querySelectorAll('.app-card');
+/* ==========================================================
+   مِد استور — منطق اصلی
+   رویدادها با event delegation روی document مدیریت می‌شوند
+   تا در WebView اندروید پایدار بمانند (بدون onclick درون‌خطی).
+   ========================================================== */
 
-    cards.forEach(card => {
-        const appName = card.getAttribute('data-name').toLowerCase();
-        if (appName.includes(searchInput)) {
-            card.style.display = 'flex';
-        } else {
-            card.style.display = 'none';
-        }
+(function () {
+  "use strict";
+
+  const appsGrid = document.getElementById("appsGrid");
+  const searchInput = document.getElementById("searchInput");
+  const noResult = document.getElementById("noResult");
+  const modal = document.getElementById("appModal");
+
+  let activeCategory = "all";
+
+  /* ---------- ساخت کارت برنامه‌ها از داده ---------- */
+  function renderApps() {
+    const apps = window.APPS || [];
+    appsGrid.innerHTML = apps.map(appCardHTML).join("");
+  }
+
+  function appCardHTML(app) {
+    return `
+      <article class="app-card" data-category="${app.category}" data-name="${escapeAttr(app.name)}" data-id="${app.id}">
+        <div>
+          <div class="app-info">
+            <img src="${app.icon}" alt="آیکون ${escapeAttr(app.nameFa)}" class="app-icon" loading="lazy" width="64" height="64">
+            <div class="app-details">
+              <h3 class="app-name">${escapeHTML(app.name)}</h3>
+              <div class="app-category">${escapeHTML(app.categoryFa)}</div>
+            </div>
+          </div>
+          <div class="app-meta">
+            <span>حجم: ${escapeHTML(app.size)}</span>
+            <div class="app-rating">★ ${escapeHTML(app.rating)}</div>
+          </div>
+        </div>
+        <button class="download-btn" data-action="open-modal" data-id="${app.id}">دانلود برنامه</button>
+      </article>`;
+  }
+
+  /* ---------- جستجو و فیلتر ---------- */
+  function applyFilters() {
+    const query = (searchInput.value || "").trim().toLowerCase();
+    const cards = document.querySelectorAll(".app-card");
+    let visible = 0;
+
+    cards.forEach((card) => {
+      const name = (card.getAttribute("data-name") || "").toLowerCase();
+      const category = card.getAttribute("data-category");
+      const matchesSearch = name.includes(query);
+      const matchesCategory = activeCategory === "all" || category === activeCategory;
+
+      if (matchesSearch && matchesCategory) {
+        card.style.display = "flex";
+        visible++;
+      } else {
+        card.style.display = "none";
+      }
     });
-}
 
-// تابع فیلتر بر اساس دسته‌بندی
-function filterCategory(category, button) {
-    // تغییر استایل دکمه‌های فیلتر
-    document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
-    button.classList.add('active');
+    noResult.hidden = visible !== 0;
+  }
 
-    const cards = document.querySelectorAll('.app-card');
-    cards.forEach(card => {
-        const cardCategory = card.getAttribute('data-category');
-        if (category === 'all' || cardCategory === category) {
-            card.style.display = 'flex';
-        } else {
-            card.style.display = 'none';
-        }
-    });
-}
+  /* ---------- مدال ---------- */
+  function openModal(app) {
+    document.getElementById("modalTitle").textContent = app.nameFa;
+    document.getElementById("modalCategory").textContent = app.categoryFa;
+    document.getElementById("modalDesc").textContent = app.desc;
+    document.getElementById("modalSize").textContent = "حجم: " + app.size;
+    document.getElementById("modalVersion").textContent = "نسخه: " + app.version;
+    document.getElementById("modalIcon").src = app.icon;
+    document.getElementById("modalIcon").alt = "آیکون " + app.nameFa;
+    document.getElementById("modalDownloadBtn").href = app.link;
+    modal.classList.add("active");
+  }
 
-// باز کردن پنجره دانلود و جزئیات
-function openModal(title, category, desc, size, version, apkLink, iconUrl) {
-    document.getElementById('modalTitle').innerText = title;
-    document.getElementById('modalCategory').innerText = category;
-    document.getElementById('modalDesc').innerText = desc;
-    document.getElementById('modalSize').innerText = 'حجم: ' + size;
-    document.getElementById('modalVersion').innerText = 'نسخه: ' + version;
-    document.getElementById('modalIcon').src = iconUrl;
-    
-    const downloadBtn = document.getElementById('modalDownloadBtn');
-    downloadBtn.href = apkLink;
+  function closeModal() {
+    modal.classList.remove("active");
+  }
 
-    document.getElementById('appModal').classList.add('active');
-}
+  function findApp(id) {
+    return (window.APPS || []).find((a) => a.id === id);
+  }
 
-// بستن پنجره جزئیات
-function closeModal() {
-    document.getElementById('appModal').classList.remove('active');
-}
+  /* ---------- Event delegation روی document ---------- */
+  document.addEventListener("click", function (event) {
+    const target = event.target;
 
-// بستن مدال با کلیک روی فضای بیرونی
-window.onclick = function(event) {
-    const modal = document.getElementById('appModal');
-    if (event.target === modal) {
-        closeModal();
+    // باز کردن مدال
+    const openBtn = target.closest('[data-action="open-modal"]');
+    if (openBtn) {
+      const app = findApp(openBtn.getAttribute("data-id"));
+      if (app) openModal(app);
+      return;
     }
-}
 
-// ==========================================
-// بخش مدیریت Service Worker و آپدیت خودکار (بدون تایید کاربر)
-// ==========================================
+    // فیلتر دسته‌بندی
+    const catBtn = target.closest(".category-btn");
+    if (catBtn) {
+      document.querySelectorAll(".category-btn").forEach((b) => b.classList.remove("active"));
+      catBtn.classList.add("active");
+      activeCategory = catBtn.getAttribute("data-filter");
+      applyFilters();
+      return;
+    }
 
-let refreshing = false;
+    // بستن مدال (دکمه بستن یا کلیک روی فضای بیرونی)
+    if (target.closest("#modalClose") || target === modal) {
+      closeModal();
+    }
+  });
 
-// وقتی سرویس ورکر جدید جایگزین شد، صفحه را فقط یک‌بار ریلود کن
-navigator.serviceWorker.addEventListener('controllerchange', () => {
-    if (!refreshing) {
-        window.location.reload();
+  document.addEventListener("input", function (event) {
+    if (event.target === searchInput) applyFilters();
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") closeModal();
+  });
+
+  /* ---------- کمک‌تابع‌های امنیتی ---------- */
+  function escapeHTML(str) {
+    const div = document.createElement("div");
+    div.textContent = str == null ? "" : String(str);
+    return div.innerHTML;
+  }
+  function escapeAttr(str) {
+    return escapeHTML(str).replace(/"/g, "&quot;");
+  }
+
+  /* ---------- راه‌اندازی اولیه ---------- */
+  document.addEventListener("DOMContentLoaded", function () {
+    renderApps();
+    applyFilters();
+    const yearEl = document.getElementById("year");
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+  });
+
+  /* ==========================================================
+     مدیریت Service Worker و آپدیت خودکار
+     ========================================================== */
+  if ("serviceWorker" in navigator) {
+    let refreshing = false;
+    navigator.serviceWorker.addEventListener("controllerchange", () => {
+      if (!refreshing) {
         refreshing = true;
-    }
-});
-
-let deferredPrompt;
-window.addEventListener('beforeinstallprompt', (e) => { 
-    e.preventDefault(); 
-    deferredPrompt = e; 
-});
-
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js').then(reg => {
-            reg.addEventListener('updatefound', () => {
-                const newWorker = reg.installing;
-                newWorker.addEventListener('statechange', () => {
-                    // اگر سرویس ورکر جدید نصب شد و یک سرویس ورکر قدیمی در حال کار است
-                    if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                        // بدون اجازه گرفتن از کاربر، مستقیماً پیام جایگزینی را ارسال کن
-                        newWorker.postMessage('skipWaiting');
-                    }
-                });
-            });
-        }).catch(error => console.log('Service Worker registration failed:', error));
+        window.location.reload();
+      }
     });
-}
+
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("/sw.js").then((reg) => {
+        reg.addEventListener("updatefound", () => {
+          const newWorker = reg.installing;
+          if (!newWorker) return;
+          newWorker.addEventListener("statechange", () => {
+            if (newWorker.state === "installed" && navigator.serviceWorker.controller) {
+              newWorker.postMessage("skipWaiting");
+            }
+          });
+        });
+      }).catch((error) => console.log("Service Worker registration failed:", error));
+    });
+  }
+})();

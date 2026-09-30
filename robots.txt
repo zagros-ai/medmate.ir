@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://medmate.ir/sitemap.xml

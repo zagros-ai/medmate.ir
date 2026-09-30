@@ -3,94 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بازارچه اختصاصی برنامه‌ها</title>
-    <!-- دریافت فونت وزیرمتن -->
+
+    <!-- ========== سئوی اصلی ========== -->
+    <title>مِد استور | دانلود اپلیکیشن محاسبات دارویی و تحلیل ABG برای کادر درمان</title>
+    <meta name="description" content="مرکز دانلود اپلیکیشن‌های تخصصی پزشکی و پرستاری: برنامه محاسبات دارویی مِدمِیت و ابزار تحلیل گازهای خونی (ABG). محاسبه دوز دارو، نرخ انفوزیون و تفسیر اسید-باز برای پرستاران، پزشکان و دانشجویان علوم پزشکی.">
+    <meta name="keywords" content="محاسبات دارویی, محاسبه دوز دارو, اپلیکیشن پرستاری, تحلیل ABG, گازهای خونی, نرخ انفوزیون, مدمیت, medmate, اپلیکیشن پزشکی, محاسبه دارو, دانشجو پرستاری, دانشجو پزشکی">
+    <meta name="author" content="MedMate">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#02a06b">
+    <link rel="canonical" href="https://medmate.ir/">
+
+    <!-- ========== Open Graph (تلگرام / واتساپ / فیسبوک) ========== -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="مِد استور">
+    <meta property="og:title" content="مِد استور | دانلود اپلیکیشن‌های تخصصی پزشکی و پرستاری">
+    <meta property="og:description" content="برنامه محاسبات دارویی مِدمِیت و ابزار تحلیل گازهای خونی (ABG) را مستقیم و رایگان دانلود کنید.">
+    <meta property="og:url" content="https://medmate.ir/">
+    <meta property="og:image" content="https://medmate.ir/image/icon.png">
+    <meta property="og:locale" content="fa_IR">
+
+    <!-- ========== Twitter Card ========== -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="مِد استور | اپلیکیشن‌های تخصصی پزشکی و پرستاری">
+    <meta name="twitter:description" content="محاسبات دارویی و تحلیل گازهای خونی (ABG) برای کادر درمان.">
+    <meta name="twitter:image" content="https://medmate.ir/image/icon.png">
+
+    <!-- ========== آیکون و PWA ========== -->
+    <link rel="icon" href="image/icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="image/icon.png">
+
+    <!-- ========== فونت وزیرمتن ========== -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
-    <!-- اتصال فایل CSS -->
+
+    <!-- ========== استایل ========== -->
     <link rel="stylesheet" href="css/styles.css">
+
+    <!-- ========== داده ساختاریافته (Schema.org) ========== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "مِد استور",
+      "url": "https://medmate.ir/",
+      "inLanguage": "fa-IR",
+      "description": "مرکز دانلود اپلیکیشن‌های تخصصی پزشکی و پرستاری شامل محاسبات دارویی و تحلیل گازهای خونی."
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "Medmate — محاسبات دارویی",
+          "operatingSystem": "Android",
+          "applicationCategory": "MedicalApplication",
+          "description": "برنامه جامع محاسبات دارویی برای کادر درمان و دانشجویان پزشکی و پرستاری.",
+          "downloadUrl": "http://cafebazaar.ir/app/?id=ir.medmate.app&ref=share",
+          "softwareVersion": "5.5.5",
+          "image": "https://medmate.ir/image/icon.png",
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "ratingCount": "120"
+          },
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "IRR" }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "Blood Gas Expert — تحلیل گازهای خونی (ABG)",
+          "operatingSystem": "Android",
+          "applicationCategory": "MedicalApplication",
+          "description": "ابزار هوشمند تحلیل آزمایش‌های گاز خون شریانی و وریدی همراه با تفسیر کامل اختلالات اسید و باز.",
+          "downloadUrl": "http://cafebazaar.ir/app/?id=ir.bloodgasexpert.pkg&ref=share",
+          "softwareVersion": "1.2.0",
+          "image": "https://medmate.ir/image/ABGg.png",
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "ratingCount": "90"
+          },
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "IRR" }
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
 
     <!-- هدر سایت -->
     <header>
         <div class="navbar">
-            <a href="#" class="brand">
-                <div class="brand-icon">▼</div>
+            <a href="#" class="brand" aria-label="مِد استور، صفحه اصلی">
+                <div class="brand-icon" aria-hidden="true">▼</div>
                 <span>مِــــــــد استور</span>
             </a>
             <div class="search-box">
-                <input type="text" id="searchInput" placeholder="جستجوی برنامه یا بازی..." onkeyup="filterApps()">
+                <label for="searchInput" class="sr-only">جستجوی برنامه</label>
+                <input type="search" id="searchInput" placeholder="جستجوی برنامه یا بازی..." autocomplete="off">
             </div>
         </div>
     </header>
 
-    <!-- بنر تبلیغاتی/معرفی -->
+    <!-- بنر معرفی -->
     <section class="hero-banner">
         <div class="banner-content">
             <h1>مرکز دانلود اختصاصی اپلیکیشن‌های پزشکی و پرستاری</h1>
-            <p>جدیدترین و کاربردی‌ترین نرم‌افزارهای طراحی‌شده را به‌صورت مستقیم و سریع دانلود کنید.</p>
+            <p>جدیدترین و کاربردی‌ترین نرم‌افزارهای تخصصی محاسبات دارویی و تحلیل آزمایش‌ها را مستقیم و سریع دانلود کنید.</p>
         </div>
     </section>
 
     <!-- دکمه‌های فیلتر دسته‌بندی -->
-    <div class="categories">
-        <button class="category-btn active" onclick="filterCategory('all', this)">همه برنامه‌ها</button>
-        <button class="category-btn" onclick="filterCategory('medical', this)">پزشکی و سلامت</button>
-        <button class="category-btn" onclick="filterCategory('tools', this)">ابزارها</button>
-        <button class="category-btn" onclick="filterCategory('utility', this)">کاربردی</button>
-    </div>
+    <nav class="categories" aria-label="فیلتر دسته‌بندی برنامه‌ها">
+        <button class="category-btn active" data-filter="all">همه برنامه‌ها</button>
+        <button class="category-btn" data-filter="medical">پزشکی و سلامت</button>
+        <button class="category-btn" data-filter="tools">ابزارها</button>
+        <button class="category-btn" data-filter="utility">کاربردی</button>
+    </nav>
 
     <!-- لیست برنامه‌ها -->
     <main class="main-container">
         <h2 class="section-title">برنامه‌های منتخب</h2>
-        
-        <div class="apps-grid" id="appsGrid">
-            
-            <!-- کارت برنامه ۱ -->
-            <div class="app-card" data-category="medical" data-name="Medmate">
-                <div>
-                    <div class="app-info">
-                        <img src="image/icon.png" alt="Medmate" class="app-icon">
-                        <div class="app-details">
-                            <div class="app-name">Medmate</div>
-                            <div class="app-category">پزشکی و سلامت</div>
-                        </div>
-                    </div>
-                    <div class="app-meta">
-                        <span>حجم: 9 مگابایت</span>
-                        <div class="app-rating">★ ۴.۸</div>
-                    </div>
-                </div>
-                <button class="download-btn" onclick="openModal('Medmate', 'پزشکی و سلامت', 'برنامه جامع محاسبات دارویی  برای کادر درمان و دانشجویان پزشکی و پرستاری.', '9MB', '5.5.5', 'http://cafebazaar.ir/app/?id=ir.medmate.app&ref=share', 'image/icon.png')">دانلود برنامه</button>
-            </div>
 
-            <!-- کارت برنامه ۲ -->
-            <div class="app-card" data-category="medical" data-name="تحلیل گازهای خونی">
-                <div>
-                    <div class="app-info">
-                        <img src="image/ABGg.png" alt="تحلیل گازهای خونی" class="app-icon">
-                        <div class="app-details">
-                            <div class="app-name">Blood Gas Expert</div>
-                            <div class="app-category">پزشکی و سلامت</div>
-                        </div>
-                    </div>
-                    <div class="app-meta">
-                        <span>حجم: 7 مگابایت</span>
-                        <div class="app-rating">★ ۴.۹</div>
-                    </div>
-                </div>
-                <button class="download-btn" onclick="openModal('تحلیل گازهای خونی (ABG)', 'پزشکی و سلامت', 'ابزار هوشمند تحلیل آزمایش‌های گاز خون شریانی و وریدی همراه با تفسیر کامل اختلالات اسید و باز.', '8MB', '1.2.0', 'http://cafebazaar.ir/app/?id=ir.bloodgasexpert.pkg&ref=share', 'image/ABGg.png')">دانلود برنامه</button>
-            </div>
+        <!-- کارت‌ها به‌صورت پویا از js/apps-data.js ساخته می‌شوند -->
+        <div class="apps-grid" id="appsGrid" aria-live="polite"></div>
 
-        </div>
+        <p class="no-result" id="noResult" hidden>موردی مطابق جستجوی شما پیدا نشد.</p>
+
+        <!-- بخش درباره برای اعتماد و سئوی محتوایی -->
+        <section class="content-section" id="about">
+            <h2 class="section-title">درباره مِد استور</h2>
+            <p>
+                مِد استور یک مرجع تخصصی برای دانلود اپلیکیشن‌های پزشکی و پرستاری است.
+                برنامه‌های ما با هدف کاهش خطاهای دارویی و ساده‌سازی محاسبات بالینی
+                برای پرستاران، پزشکان و دانشجویان علوم پزشکی طراحی شده‌اند؛ از
+                <strong>محاسبه دوز دارو بر اساس وزن بیمار</strong> و
+                <strong>محاسبه نرخ انفوزیون</strong> تا
+                <strong>تحلیل و تفسیر گازهای خونی (ABG)</strong>.
+            </p>
+        </section>
+
+        <!-- تماس -->
+        <section class="content-section" id="contact">
+            <h2 class="section-title">پشتیبانی و تماس</h2>
+            <p>برای مشکلات فنی یا پیشنهادها با ما در ارتباط باشید:</p>
+            <ul class="contact-list">
+                <li>ایمیل: <a href="mailto:tavakol.p97@gmail.com">tavakol.p97@gmail.com</a></li>
+                <li>ایمیل علمی: <a href="mailto:Salaramir@gmail.com">Salaramir@gmail.com</a></li>
+            </ul>
+        </section>
     </main>
 
-    <!-- پنجره پاپ‌آپ (Modal) جزییات برنامه -->
-    <div class="modal-overlay" id="appModal">
+    <!-- فوتر -->
+    <footer class="site-footer">
+        <p>© تمامی حقوق برای مِد استور محفوظ است — <span id="year"></span></p>
+    </footer>
+
+    <!-- پنجره پاپ‌آپ (Modal) جزئیات برنامه -->
+    <div class="modal-overlay" id="appModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
         <div class="modal-card">
-            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <button class="modal-close" id="modalClose" aria-label="بستن">&times;</button>
             <div class="modal-header">
-                <img src="" id="modalIcon" class="app-icon" alt="آیکون">
+                <img src="" id="modalIcon" class="app-icon" alt="آیکون برنامه">
                 <div class="app-details">
                     <div class="app-name" id="modalTitle">نام برنامه</div>
                     <div class="app-category" id="modalCategory">دسته‌بندی</div>
@@ -100,14 +176,13 @@
                 <span id="modalSize">حجم: --</span>
                 <span id="modalVersion">نسخه: --</span>
             </div>
-            <div class="modal-description" id="modalDesc">
-                توضیحات کامل برنامه در این بخش قرار می‌گیرد...
-            </div>
-            <a href="#" id="modalDownloadBtn" class="modal-download-link" download>دانلود از کافه بازار </a>
+            <div class="modal-description" id="modalDesc"></div>
+            <a href="#" id="modalDownloadBtn" class="modal-download-link" rel="nofollow noopener" target="_blank">دانلود از کافه بازار</a>
         </div>
     </div>
 
-    <!-- اتصال فایل جاوااسکریپت -->
+    <!-- اسکریپت‌ها -->
+    <script src="js/apps-data.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
