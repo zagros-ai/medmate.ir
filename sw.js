@@ -1,10 +1,11 @@
 // توجه: برای هر بار آپدیت کردن برنامه‌های داخل سایت، عدد این نسخه را بالاتر ببرید (مثلا v30)
-const CACHE_NAME = 'my-pwa-cache-v29'; 
+const CACHE_NAME = 'my-pwa-cache-v30'; 
 const ASSETS = [
   '/',
   '/index.html',
   '/css/styles.css',
-  '/js/script.js'
+  '/js/script.js',
+  '/js/apps-data.js'
 ];
 
 self.addEventListener('install', (event) => {

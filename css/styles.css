@@ -356,6 +356,70 @@ header {
     background-color: var(--primary-hover);
 }
 
+/* بخش‌های محتوایی (درباره / تماس) */
+.content-section {
+    background-color: var(--card-bg);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    margin-top: 2rem;
+}
+
+.content-section p {
+    color: var(--text-main);
+    font-size: 0.98rem;
+}
+
+.contact-list {
+    list-style: none;
+    margin-top: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.contact-list a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.contact-list a:hover {
+    text-decoration: underline;
+}
+
+/* پیام نبود نتیجه */
+.no-result {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 2rem 0;
+    font-size: 1rem;
+}
+
+/* فوتر */
+.site-footer {
+    max-width: 1200px;
+    margin: 2.5rem auto 0;
+    padding: 1.5rem;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border-color);
+}
+
+/* کلاس کمکی برای دسترس‌پذیری (پنهان از دید، قابل‌خواندن برای اسکرین‌ریدر) */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 /* واکنش‌گرایی برای موبایل */
 @media (max-width: 600px) {
     .navbar {
