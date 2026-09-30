@@ -203,6 +203,15 @@ header {
     margin-bottom: 1rem;
 }
 
+.app-info-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.app-info-link:hover .app-name {
+    color: var(--primary-color);
+}
+
 .app-icon {
     width: 64px;
     height: 64px;
@@ -431,5 +440,142 @@ header {
     }
     .apps-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================================
+   صفحات اختصاصی اپلیکیشن‌ها
+   ========================================================== */
+.app-page {
+    padding-top: 1rem;
+}
+
+.breadcrumb {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 1.25rem;
+}
+
+.breadcrumb a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.app-hero {
+    background-color: var(--card-bg);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.app-hero-icon {
+    width: 96px;
+    height: 96px;
+    border-radius: var(--radius-md);
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.app-hero-info {
+    flex: 1;
+    min-width: 240px;
+}
+
+.app-hero-info h1 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 0.4rem;
+}
+
+.app-hero-sub {
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin-bottom: 0.9rem;
+}
+
+.app-hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 1.25rem;
+}
+
+.app-hero-meta span:first-child {
+    color: #ffb400;
+    font-weight: 700;
+}
+
+.app-hero-btn {
+    max-width: 260px;
+}
+
+.feature-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.6rem;
+    margin-top: 0.5rem;
+}
+
+.feature-list li {
+    position: relative;
+    padding-right: 1.5rem;
+    color: var(--text-main);
+    font-size: 0.95rem;
+}
+
+.feature-list li::before {
+    content: '✓';
+    position: absolute;
+    right: 0;
+    color: var(--primary-color);
+    font-weight: 800;
+}
+
+.faq h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-top: 1rem;
+}
+
+.faq p {
+    color: var(--text-muted);
+    font-size: 0.93rem;
+    margin-top: 0.25rem;
+}
+
+.back-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .app-hero {
+        flex-direction: column;
+        text-align: center;
+    }
+    .app-hero-btn {
+        max-width: 100%;
+        width: 100%;
+    }
+    .app-hero-meta {
+        justify-content: center;
     }
 }

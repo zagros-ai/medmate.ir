@@ -24,13 +24,13 @@
     return `
       <article class="app-card" data-category="${app.category}" data-name="${escapeAttr(app.name)}" data-id="${app.id}">
         <div>
-          <div class="app-info">
+          <a class="app-info app-info-link" href="${app.page || '#'}">
             <img src="${app.icon}" alt="آیکون ${escapeAttr(app.nameFa)}" class="app-icon" loading="lazy" width="64" height="64">
             <div class="app-details">
               <h3 class="app-name">${escapeHTML(app.name)}</h3>
               <div class="app-category">${escapeHTML(app.categoryFa)}</div>
             </div>
-          </div>
+          </a>
           <div class="app-meta">
             <span>حجم: ${escapeHTML(app.size)}</span>
             <div class="app-rating">★ ${escapeHTML(app.rating)}</div>
