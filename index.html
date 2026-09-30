@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بازارچه اختصاصی برنامه‌ها</title>
+    <!-- دریافت فونت وزیرمتن -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <!-- اتصال فایل CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- هدر سایت -->
+    <header>
+        <div class="navbar">
+            <a href="#" class="brand">
+                <div class="brand-icon">▼</div>
+                <span>مِــــــــد استور</span>
+            </a>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="جستجوی برنامه یا بازی..." onkeyup="filterApps()">
+            </div>
+        </div>
+    </header>
+
+    <!-- بنر تبلیغاتی/معرفی -->
+    <section class="hero-banner">
+        <div class="banner-content">
+            <h1>مرکز دانلود اختصاصی اپلیکیشن‌های پزشکی و پرستاری</h1>
+            <p>جدیدترین و کاربردی‌ترین نرم‌افزارهای طراحی‌شده را به‌صورت مستقیم و سریع دانلود کنید.</p>
+        </div>
+    </section>
+
+    <!-- دکمه‌های فیلتر دسته‌بندی -->
+    <div class="categories">
+        <button class="category-btn active" onclick="filterCategory('all', this)">همه برنامه‌ها</button>
+        <button class="category-btn" onclick="filterCategory('medical', this)">پزشکی و سلامت</button>
+        <button class="category-btn" onclick="filterCategory('tools', this)">ابزارها</button>
+        <button class="category-btn" onclick="filterCategory('utility', this)">کاربردی</button>
+    </div>
+
+    <!-- لیست برنامه‌ها -->
+    <main class="main-container">
+        <h2 class="section-title">برنامه‌های منتخب</h2>
+        
+        <div class="apps-grid" id="appsGrid">
+            
+            <!-- کارت برنامه ۱ -->
+            <div class="app-card" data-category="medical" data-name="Medmate">
+                <div>
+                    <div class="app-info">
+                        <img src="image/icon.png" alt="Medmate" class="app-icon">
+                        <div class="app-details">
+                            <div class="app-name">Medmate</div>
+                            <div class="app-category">پزشکی و سلامت</div>
+                        </div>
+                    </div>
+                    <div class="app-meta">
+                        <span>حجم: 9 مگابایت</span>
+                        <div class="app-rating">★ ۴.۸</div>
+                    </div>
+                </div>
+                <button class="download-btn" onclick="openModal('Medmate', 'پزشکی و سلامت', 'برنامه جامع محاسبات دارویی  برای کادر درمان و دانشجویان پزشکی و پرستاری.', '9MB', '5.5.5', 'http://cafebazaar.ir/app/?id=ir.medmate.app&ref=share', 'image/icon.png')">دانلود برنامه</button>
+            </div>
+
+            <!-- کارت برنامه ۲ -->
+            <div class="app-card" data-category="medical" data-name="تحلیل گازهای خونی">
+                <div>
+                    <div class="app-info">
+                        <img src="image/ABGg.png" alt="تحلیل گازهای خونی" class="app-icon">
+                        <div class="app-details">
+                            <div class="app-name">Blood Gas Expert</div>
+                            <div class="app-category">پزشکی و سلامت</div>
+                        </div>
+                    </div>
+                    <div class="app-meta">
+                        <span>حجم: 7 مگابایت</span>
+                        <div class="app-rating">★ ۴.۹</div>
+                    </div>
+                </div>
+                <button class="download-btn" onclick="openModal('تحلیل گازهای خونی (ABG)', 'پزشکی و سلامت', 'ابزار هوشمند تحلیل آزمایش‌های گاز خون شریانی و وریدی همراه با تفسیر کامل اختلالات اسید و باز.', '8MB', '1.2.0', 'http://cafebazaar.ir/app/?id=ir.bloodgasexpert.pkg&ref=share', 'image/ABGg.png')">دانلود برنامه</button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- پنجره پاپ‌آپ (Modal) جزییات برنامه -->
+    <div class="modal-overlay" id="appModal">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div class="modal-header">
+                <img src="" id="modalIcon" class="app-icon" alt="آیکون">
+                <div class="app-details">
+                    <div class="app-name" id="modalTitle">نام برنامه</div>
+                    <div class="app-category" id="modalCategory">دسته‌بندی</div>
+                </div>
+            </div>
+            <div class="app-meta" style="border: none; padding-top: 0;">
+                <span id="modalSize">حجم: --</span>
+                <span id="modalVersion">نسخه: --</span>
+            </div>
+            <div class="modal-description" id="modalDesc">
+                توضیحات کامل برنامه در این بخش قرار می‌گیرد...
+            </div>
+            <a href="#" id="modalDownloadBtn" class="modal-download-link" download>دانلود از کافه بازار </a>
+        </div>
+    </div>
+
+    <!-- اتصال فایل جاوااسکریپت -->
+    <script src="js/script.js"></script>
+</body>
+</html>
