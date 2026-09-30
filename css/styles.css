@@ -1,0 +1,371 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Vazirmatn', sans-serif;
+}
+
+:root {
+    --primary-color: #02a06b;
+    --primary-hover: #028559;
+    --bg-color: #f4f6f8;
+    --card-bg: #ffffff;
+    --text-main: #212529;
+    --text-muted: #6c757d;
+    --border-color: #e9ecef;
+    --radius-lg: 16px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    padding-bottom: 40px;
+}
+
+/* هدر و ناوبری */
+header {
+    background-color: var(--card-bg);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    gap: 1.5rem;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.brand-icon {
+    width: 38px;
+    height: 38px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.search-box {
+    flex: 1;
+    max-width: 500px;
+    position: relative;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 25px;
+    background-color: var(--bg-color);
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.search-box input:focus {
+    background-color: #ffffff;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(2, 160, 107, 0.15);
+}
+
+/* بنر اصلی */
+.hero-banner {
+    max-width: 1200px;
+    margin: 1.5rem auto;
+    padding: 0 1.5rem;
+}
+
+.banner-content {
+    background: linear-gradient(135deg, #02a06b 0%, #007953 100%);
+    color: white;
+    padding: 2.5rem 2rem;
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: var(--shadow);
+}
+
+.banner-content h1 {
+    font-size: 1.8rem;
+    font-weight: 800;
+}
+
+.banner-content p {
+    opacity: 0.9;
+    font-size: 1rem;
+}
+
+/* فیلتر دسته‌بندی */
+.categories {
+    max-width: 1200px;
+    margin: 1rem auto;
+    padding: 0 1.5rem;
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 5px;
+}
+
+.category-btn {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 1.25rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+    color: var(--text-muted);
+}
+
+.category-btn.active, .category-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* بخش کارت‌های برنامه‌ها */
+.main-container {
+    max-width: 1200px;
+    margin: 1.5rem auto;
+    padding: 0 1.5rem;
+}
+
+.section-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.section-title::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 20px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+.apps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+}
+
+.app-card {
+    background-color: var(--card-bg);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.app-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    border-color: var(--border-color);
+}
+
+.app-info {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.app-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: var(--radius-md);
+    object-fit: cover;
+    background-color: #eee;
+    flex-shrink: 0;
+}
+
+.app-details {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.app-name {
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--text-main);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.app-category {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+.app-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.app-rating {
+    color: #ffb400;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.download-btn {
+    width: 100%;
+    background-color: rgba(2, 160, 107, 0.1);
+    color: var(--primary-color);
+    border: none;
+    padding: 0.6rem;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: all 0.2s ease;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+}
+
+.download-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* مدال / پنجره جزئیات برنامه */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-card {
+    background-color: var(--card-bg);
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 500px;
+    padding: 1.5rem;
+    position: relative;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-card {
+    transform: translateY(0);
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-muted);
+}
+
+.modal-header {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.modal-description {
+    font-size: 0.95rem;
+    color: var(--text-main);
+    margin: 1rem 0;
+    line-height: 1.7;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.modal-download-link {
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    padding: 0.8rem;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    font-size: 1rem;
+    transition: background-color 0.2s ease;
+}
+
+.modal-download-link:hover {
+    background-color: var(--primary-hover);
+}
+
+/* واکنش‌گرایی برای موبایل */
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .banner-content h1 {
+        font-size: 1.4rem;
+    }
+    .apps-grid {
+        grid-template-columns: 1fr;
+    }
+}
